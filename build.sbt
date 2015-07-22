@@ -16,18 +16,20 @@ ndkBuild in Android := List()
 
 typedResources in Android := false
 
+resolvers += Resolver.jcenterRepo
+
 resolvers += "JRAF" at "http://JRAF.org/static/maven/2"
 
-resolvers += "madeye private releases" at "http://madeye-maven-repository.googlecode.com/git/"
-
 libraryDependencies ++= Seq(
-  "dnsjava" % "dnsjava" % "2.1.5",
+  "dnsjava" % "dnsjava" % "2.1.7",
   "com.github.kevinsawicki" % "http-request" % "5.6",
   "commons-net" % "commons-net" % "3.3",
   "com.google.zxing" % "android-integration" % "3.1.0"
 )
 
 libraryDependencies ++= Seq(
+  "com.joanzapata.android" % "android-iconify" % "1.0.9",
+  "net.glxn.qrgen" % "android" % "2.0",
   "net.simonvt.menudrawer" % "menudrawer" % "3.0.6",
   "com.google.android.gms" % "play-services-base" % "6.5.87",
   "com.google.android.gms" % "play-services-ads" % "6.5.87",
@@ -48,6 +50,7 @@ proguardOptions in Android ++= Seq("-keep class android.support.v4.app.** { *; }
           "-keep class org.jraf.android.backport.** { *; }",
           "-keep class com.github.shadowsocks.** { *; }",
           "-keep class * extends com.j256.ormlite.** { *; }",
+          "-keep class com.joanzapata.** { *; }",
           "-keepattributes *Annotation*",
           "-dontwarn org.xbill.**",
           "-dontwarn com.actionbarsherlock.**")
